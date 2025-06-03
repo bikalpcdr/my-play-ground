@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bikalp.myplayground.mapper.BookingMapper">
+
+    <select id="findAllBookings" resultType="com.bikalp.myplayground.entity.Booking">
+        SELECT * FROM bookings
+    </select>
+
+    <select id="findBookingById" resultType="com.bikalp.myplayground.entity.Booking">
+        SELECT * FROM bookings WHERE id = #{id}
+    </select>
+
+    <select id="findBookingsByUserId" resultType="com.bikalp.myplayground.entity.Booking">
+        SELECT * FROM bookings WHERE user_id = #{userId}
+    </select>
+
+    <select id="findBookingsByServiceType" resultType="com.bikalp.myplayground.entity.Booking">
+        SELECT * FROM bookings WHERE service_type = #{serviceType}
+    </select>
+</mapper> 

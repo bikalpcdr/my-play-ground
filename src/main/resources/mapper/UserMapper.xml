@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bikalp.myplayground.mapper.UserMapper">
+
+    <select id="findAllUsers" resultType="com.bikalp.myplayground.entity.User">
+        SELECT * FROM users
+    </select>
+
+    <select id="findUserById" resultType="com.bikalp.myplayground.entity.User">
+        SELECT * FROM users WHERE id = #{id}
+    </select>
+
+    <select id="findUsersByName" resultType="com.bikalp.myplayground.entity.User">
+        SELECT * FROM users WHERE name LIKE CONCAT('%', #{name}, '%')
+    </select>
+
+    <select id="findUserByEmail" resultType="com.bikalp.myplayground.entity.User">
+        SELECT * FROM users WHERE email = #{email}
+    </select>
+</mapper> 
