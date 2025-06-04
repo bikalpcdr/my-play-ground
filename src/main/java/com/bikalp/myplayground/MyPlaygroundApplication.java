@@ -15,4 +15,5 @@ public class MyPlaygroundApplication {
     }
 // just for fun...!!!
     // migrated repo from github to gitlab
+    // another fun comment
 }
