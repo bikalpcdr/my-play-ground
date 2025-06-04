@@ -3,7 +3,6 @@ package com.bikalp.myplayground.service;
 import com.bikalp.myplayground.entity.Order;
 import com.bikalp.myplayground.repository.OrderJpaRepository;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,8 +11,11 @@ import java.util.List;
 @Transactional
 public class OrderService {
 
-    @Autowired
-    private OrderJpaRepository orderJpaRepository;
+    private final OrderJpaRepository orderJpaRepository;
+
+    public OrderService(OrderJpaRepository orderJpaRepository) {
+        this.orderJpaRepository = orderJpaRepository;
+    }
 
     // JPA operations for saving
     public Order saveOrder(Order order) {

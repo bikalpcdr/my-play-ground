@@ -3,7 +3,6 @@ package com.bikalp.myplayground.service;
 import com.bikalp.myplayground.entity.Booking;
 import com.bikalp.myplayground.repository.BookingJpaRepository;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,8 +11,11 @@ import java.util.List;
 @Transactional
 public class BookingService {
 
-    @Autowired
-    private BookingJpaRepository bookingJpaRepository;
+    private final BookingJpaRepository bookingJpaRepository;
+
+    public BookingService(BookingJpaRepository bookingJpaRepository) {
+        this.bookingJpaRepository = bookingJpaRepository;
+    }
 
 
     // JPA operations for saving

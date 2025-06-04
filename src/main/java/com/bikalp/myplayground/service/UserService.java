@@ -3,7 +3,6 @@ package com.bikalp.myplayground.service;
 import com.bikalp.myplayground.entity.User;
 import com.bikalp.myplayground.repository.UserJpaRepository;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,8 +11,11 @@ import java.util.List;
 @Transactional
 public class UserService {
 
-    @Autowired
-    private UserJpaRepository userJpaRepository;
+    private final UserJpaRepository userJpaRepository;
+
+    public UserService(UserJpaRepository userJpaRepository) {
+        this.userJpaRepository = userJpaRepository;
+    }
 
 
     // JPA operations for saving

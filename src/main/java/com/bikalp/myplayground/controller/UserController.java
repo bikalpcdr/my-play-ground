@@ -5,7 +5,6 @@ import com.bikalp.myplayground.entity.User;
 import com.bikalp.myplayground.service.OrderService;
 import com.bikalp.myplayground.service.UserService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +15,14 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private OrderService orderService;
+
+    private final UserService userService;
+    private final OrderService orderService;
+
+    public UserController(UserService userService, OrderService orderService) {
+        this.userService = userService;
+        this.orderService = orderService;
+    }
 
     @PostMapping
     public ResponseEntity<User> createUser(@Valid @RequestBody User user) {

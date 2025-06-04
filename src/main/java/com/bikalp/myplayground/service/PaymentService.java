@@ -3,7 +3,6 @@ package com.bikalp.myplayground.service;
 import com.bikalp.myplayground.entity.Payment;
 import com.bikalp.myplayground.repository.PaymentJpaRepository;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,8 +11,11 @@ import java.util.List;
 @Transactional
 public class PaymentService {
 
-    @Autowired
-    private PaymentJpaRepository paymentJpaRepository;
+    private final PaymentJpaRepository paymentJpaRepository;
+
+    public PaymentService(PaymentJpaRepository paymentJpaRepository) {
+        this.paymentJpaRepository = paymentJpaRepository;
+    }
 
     // JPA operations for saving
     public Payment savePayment(Payment payment) {

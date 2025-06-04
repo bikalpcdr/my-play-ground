@@ -3,7 +3,6 @@ package com.bikalp.myplayground.controller;
 import com.bikalp.myplayground.entity.Payment;
 import com.bikalp.myplayground.service.PaymentService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +13,11 @@ import java.util.List;
 @RequestMapping("/api/payments")
 public class PaymentController {
 
-    @Autowired
-    private PaymentService paymentService;
+    private final PaymentService paymentService;
+
+    public PaymentController(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
 
     @PostMapping
     public ResponseEntity<Payment> createPayment(@Valid @RequestBody Payment payment) {
